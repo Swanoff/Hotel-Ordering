@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<body>
+  {% if registered %}
+  <p>
+    Thanks for registering.
+    <br />
+  </p>
+  {% endif %}
+<div class = "Register">
+  <form method="POST" action = "{% url 'register'%}">
+    <label for="{{form1.username.id_for_label}}"> Username </label>
+    {{form1.username}}
+    <br />
+    <label for="{{form1.password.id_for_label}}"> Password </label>
+  {{form1.password}}
+  <br />
+  <label for="{{form1.email.id_for_label}}">Email Address</label>
+  {{form1.email}}
+<br />
+<label for="{{form2.phone_no.id_for_label}}">Phone Number</label>
+{{form2.phone_no}}
+<br />
+  <input type="submit" class="btn btn-primary" value="Register"/>
+  {% csrf_token %}
+  </form>
+</div>
+{% if form1.errors %}
+    {% for field in form1 %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form1.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+<div id="login" style="float:right">
+  <form method="POST" action="{%url 'login' %}">
+
+  <p>Already a member?</p>
+
+  <label for="username">Username:</label>
+  <input name="username" placeholder="username" required>
+
+    <label for="password">Password:</label>
+     <input type="password" name="password" placeholder="password" required>
+     <input type="submit" class="btn btn-primary btn-sm" name="" value="Sign In">
+     {% csrf_token %}
+  </form>
+  <p><strong>-- OR --</strong></p>
+  <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+  <p><strong>-- OR --</strong></p>
+<a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
+</div>
+</body>
+</html>
