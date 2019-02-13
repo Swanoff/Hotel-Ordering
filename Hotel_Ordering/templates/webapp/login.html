@@ -1,62 +1,109 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<body>
-  {% if registered %}
-  <p>
-    Thanks for registering.
-    <br />
-  </p>
-  {% endif %}
-<div class = "Register">
-  <form method="POST" action = "{% url 'register'%}">
-    <label for="{{form1.username.id_for_label}}"> Username </label>
-    {{form1.username}}
-    <br />
-    <label for="{{form1.password.id_for_label}}"> Password </label>
-  {{form1.password}}
-  <br />
-  <label for="{{form1.email.id_for_label}}">Email Address</label>
-  {{form1.email}}
-<br />
-<label for="{{form2.phone_no.id_for_label}}">Phone Number</label>
-{{form2.phone_no}}
-<br />
-  <input type="submit" class="btn btn-primary" value="Register"/>
-  {% csrf_token %}
-  </form>
-</div>
-{% if form1.errors %}
-    {% for field in form1 %}
-        {% for error in field.errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-    {% endfor %}
-    {% for error in form1.non_field_errors %}
-        <div class="alert alert-danger">
-            <strong>{{ error|escape }}</strong>
+  <head>
+    <title>Welcome</title>
+    <!-- CDN for Bootstrap v4.0.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- CDN for Semantic UI v2.3.3 -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+  </head>
+
+  <style>
+    *
+    {
+        box-sizing: border-box;
+    }
+
+    section
+    {
+        width: 100%;
+        display: table;
+        margin: 0;
+        max-width: none;
+        height: 100vh;
+    }
+
+    .content
+    {
+        display: table-cell;
+        /* vertical-align: middle; */
+    }
+  </style>
+
+  <body>
+    <section>
+
+      <div class="content">
+
+        <div style="width: 100%; height: 10%; background-color: red;">
+          
         </div>
-    {% endfor %}
-{% endif %}
-<div id="login" style="float:right">
-  <form method="POST" action="{%url 'login' %}">
 
-  <p>Already a member?</p>
+          {% if registered %}
+          <p>
+            Thanks for registering.
+            <br />
+          </p>
+          {% endif %}
 
-  <label for="username">Username:</label>
-  <input name="username" placeholder="username" required>
+          <div class="ui form Register" style="width: 50%; float: left; padding: 10%;">
+            <form method="POST" action = "{% url 'register'%}">
+              <label for="{{form1.username.id_for_label}}"> Username </label>
+              {{form1.username}}
+              <br /><br>
+              <label for="{{form1.password.id_for_label}}"> Password </label>
+              {{form1.password}}
+              <br /><br>
+              <label for="{{form1.email.id_for_label}}">Email Address</label>
+              {{form1.email}}
+              <br /><br>
+              <label for="{{form2.phone_no.id_for_label}}">Phone Number</label>
+              {{form2.phone_no}}
+              <br />
+              <input type="submit" class="ui big blue button" value="Register" style="margin: 7% 33%" />
+              {% csrf_token %}
+            </form>
+          </div>
 
-    <label for="password">Password:</label>
-     <input type="password" name="password" placeholder="password" required>
-     <input type="submit" class="btn btn-primary btn-sm" name="" value="Sign In">
-     {% csrf_token %}
-  </form>
-  <p><strong>-- OR --</strong></p>
-  <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-  <p><strong>-- OR --</strong></p>
-<a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
-</div>
-</body>
+          {% if form1.errors %}
+              {% for field in form1 %}
+                  {% for error in field.errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+              {% endfor %}
+              {% for error in form1.non_field_errors %}
+                  <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endif %}
+
+          <div id="login" style="width: 50%; float:right; padding: 10%;">
+            <form method="POST" class="ui form" action="{%url 'login' %}">
+              <p>Already a member?</p>
+              <label for="username">Username:</label>
+              <input name="username" placeholder="username" required>
+              <br><br>
+              <label for="password">Password:</label>
+              <input type="password" name="password" placeholder="password" required>
+              <input type="submit" class="ui big blue button" style="margin: 7% 33%" name="" value="Sign In">
+              {% csrf_token %}
+            </form>
+            <p style="padding-left: 40%;"><strong>-- OR --</strong></p>
+            <br>
+            <strong style="padding-left: 30%">Sign in with: </strong>
+            <a href="{% url 'social:begin' 'facebook' %}"><i class="big facebook f icon"></i></a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="big google icon"></i></a><br>
+          </div>
+      </div>
+
+    </section>
+
+  </body>
 </html>
