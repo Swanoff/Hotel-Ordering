@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome</title>
+    <title>Sea Hotel</title>
     <!-- CDN for Bootstrap v4.0.0 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -39,45 +39,61 @@
       background-size: cover;
       color: white;
     }
+
+    #intro
+    {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./static/webapp/img/caribbean-village.jpg') no-repeat center;
+      background-size: cover;
+    }
   </style>
 
   <body>
+
+    <div class="ui segment container" style="position: fixed; width: 100%; border-radius: 0%; margin: 0; color: black;">
+      <span style="padding-left: 13%;">
+        <strong><a href="#">About Us</a></strong>
+      </span>
+      <span style="padding-left: 7%;">
+        <strong><a href="#">Banquets</a></strong>
+      </span>
+      <span style="padding-left: 7%;">
+        <strong><a href="#">Gallery</a></strong>
+      </span>
+      <span style="padding-left: 4%;">
+        <img src=".\static\webapp\img\logo.png" height="60px" style="padding-left: 3%;">
+      </span>
+      <span style="padding-left: 7%;">
+        <strong><a href="#">Rooms</a></strong>
+      </span>
+      <span style="padding-left: 7%;">
+        <strong><a href="#">Awards</a></strong>
+      </span>
+      <span style="padding-left: 7%;">
+        <strong><a href="#">Contact Us</a></strong>
+      </span>
+    </div>
+
+    <section id="intro">
+      <div class="content" style="text-align: center; color: white;">
+        <h1 style="padding-top: 25%;">Define your vacation</h1>
+        <h1>Redefine happiness</h1>
+      </div>
+    </section>
+
     <section id="home">
       <div class="content">
 
-        <div class="ui segment container" style="width: 100%; border-radius: 0%; margin: 0; color: black;">
-          <span style="padding-left: 13%;">
-            <strong>About Us</strong>
-          </span>
-          <span style="padding-left: 7%;">
-            <strong>Banquets</strong>
-          </span>
-          <span style="padding-left: 7%;">
-            <strong>Gallery</strong>
-          </span>
-          <span style="padding-left: 4%;">
-            <img src=".\static\webapp\img\logo.png" height="60px" style="padding-left: 3%;">
-          </span>
-          <span style="padding-left: 7%;">
-            <strong>Rooms</strong>
-          </span>
-          <span style="padding-left: 7%;">
-            <strong>Awards</strong>
-          </span>
-          <span style="padding-left: 7%;">
-            <strong>Contact Us</strong>
-          </span>
-        </div>
 
-        <div>
+
+        <div id="home">
           {% if registered %}
           <p>
             Thanks for registering.
             <br />
           </p>
           {% endif %}
-
-          <div class="ui form Register" style="width: 50%; float: left; padding: 9%;">
+        </div>
+          <div class="ui form Register" style="width: 50%; float: left; padding: 15%;">
             <form method="POST" action = "{% url 'register'%}">
               <label for="{{form1.username.id_for_label}}"> Username </label>
               {{form1.username}}
@@ -111,7 +127,7 @@
               {% endfor %}
           {% endif %}
 
-          <div id="login" style="width: 50%; float:right; padding: 10%;">
+          <div id="login" style="width: 50%; float:right; padding: 15%;">
             <form method="POST" class="ui form" action="{%url 'login' %}">
               <p>Already a member?</p>
               <label for="username">Username:</label>
@@ -130,8 +146,11 @@
           </div>
         </div>
 
-      </div>
     </section>
+
+    <footer style="text-align: center; height: 6%; padding-top: 1%;">
+      <h4>&copy; 2019 Sea Hotel. All Rights Reserved.</h4>
+    </footer>
 
   </body>
 </html>
