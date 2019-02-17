@@ -32,23 +32,69 @@ section
     display: table-cell;
     /* vertical-align: middle; */
 }
+
+#book
+{
+    background: url('../../static/webapp/img/tropiki_edit.png') no-repeat center center;
+    background-size: cover;
+}
 </style>
 
 <body>
-    <section>
-        <div class="content">
-            <div class="ui segment container" style="width: 100%; border-radius: 0%; margin: 0;">
-                <span style="padding-left: 4%">
-                    <img src="../../static/webapp/img/logo.png" height="60px">
-                </span>
-                <span style="padding-left: 65%;">
-                    Hello, {{ user.username }}!
-                </span>
-                <span style="padding-left: 4%">
-                    <a href="/logout">Sign Out</a>
-                </span>
+    <div class="ui segment container" style="width: 100%; border-radius: 0%; margin: 0;">
+        <span style="padding-left: 4%">
+            <img src="../../static/webapp/img/logo.png" height="60px">
+        </span>
+        <span style="padding-left: 65%;">
+            Hello, {{ user.username }}!
+        </span>
+        <span style="padding-left: 4%">
+            <a href="/logout">Sign Out</a>
+        </span>
+    </div>
+    <div id="book" style="height: 450px; color: white;">
+        <div class="ui round red button" style="position: fixed; top: 38%; left: 46.5%;">
+            BOOK NOW
+        </div>
+        <div class="container" style="position: fixed; left: 12%; top: 55%;">
+            <div class="ui segment" style="color: black">
+                <!-- Check-in date -->
+                <div style="float: left;">
+                    <i class="ui big red calendar icon"></i>
+                    <div class="ui input">
+                        <input type="date" placeholder="Check-in">
+                    </div>
+                </div>
+                <!-- Check-out date -->
+                <div style="position: relative; left: 4%;">
+                    <i class="ui big red calendar icon"></i>
+                    <div class="ui input">
+                        <input type="date">
+                    </div>
+                </div>
+                <!-- Guest and Room count -->
+                <!-- <div class="ui button">Show flowing popup</div>
+                <div class="ui flowing popup top left transition hidden">
+                    <div class="ui three column divided center aligned grid">
+                        <div class="column">
+                            <h4 class="ui header">Basic Plan</h4>
+                            <p><b>2</b> projects, $10 a month</p>
+                            <div class="ui button">Choose</div>
+                        </div>
+                        <div class="column">
+                            <h4 class="ui header">Business Plan</h4>
+                            <p><b>5</b> projects, $20 a month</p>
+                            <div class="ui button">Choose</div>
+                        </div>
+                        <div class="column">
+                            <h4 class="ui header">Premium Plan</h4>
+                            <p><b>8</b> projects, $25 a month</p>
+                            <div class="ui button">Choose</div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
-    </section>
+    </div>
 </body>
 </html>
