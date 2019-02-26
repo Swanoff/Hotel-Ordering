@@ -12,12 +12,15 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 # Create your views here.
 def index(request):
+    print(request.user.is_authenticated)
     if(request.user.is_authenticated):
-        redirect('home')
+        return redirect('home')
     form1 = LoginForm()
     form2  = RegForm()
     form = {"form1":form1,"form2":form2}
     return render(request,'webapp/login.html',context = form)
+def contact(request):
+    return render(request,'webapp/test.html')
 def register(request):
     registered = False
     form1 = LoginForm(request.POST)
@@ -47,9 +50,9 @@ def user_login(request):
     user = authenticate(username = username,password = password)
     if user:
         login(request,user)
-        return render(request,'webapp/home.html')
+        return redirect('home')
     else:
-        return render(request,'webapp/home.html')
+        return render(request,'webapp/login.html',context={'errors':"Wrong Username or password"})
 @login_required(login_url='/')
 def user_logout(request):
     logout(request)

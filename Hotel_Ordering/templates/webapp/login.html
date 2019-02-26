@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+
 <html>
   <head>
     <title>Sea Hotel</title>
@@ -35,16 +37,46 @@
 
     #home
     {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./static/webapp/img/seaView.jpg') no-repeat center center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static '/webapp/img/seaView.jpg' %}") no-repeat center center;
       background-size: cover;
       color: white;
     }
 
     #intro
     {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./static/webapp/img/caribbean-village.jpg') no-repeat center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static "webapp/img/caribbean-village.jpg" %} ') no-repeat center;
       background-size: cover;
     }
+
+    .image-container{
+      width: 128px !important;
+      padding: 10px;
+      padding-top: 10px;
+    }
+
+    .image-wrapper{
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .faq-align-container{
+      display: grid;
+      grid-template-columns: repeat(16,1fr) ;
+    }
+
+    .faq-container{
+      grid-column: 5/-5;
+      font-size: 1.2rem;
+    }
+     .faq-header{
+       text-align:center;
+       padding: 10px;
+       padding-top: 50px;
+       padding-bottom: 50px;
+       grid-column: 1/-1;
+       }
+
+
   </style>
 
   <body>
@@ -60,7 +92,7 @@
         <strong><a href="#">Gallery</a></strong>
       </span>
       <span style="padding-left: 4%;">
-        <img src=".\static\webapp\img\logo.png" height="60px" style="padding-left: 3%;">
+        <img src="{% static 'webapp/img/logo.png' %}" height="60px" style="padding-left: 3%;">
       </span>
       <span style="padding-left: 7%;">
         <strong><a href="#">Rooms</a></strong>
@@ -69,7 +101,7 @@
         <strong><a href="#">Awards</a></strong>
       </span>
       <span style="padding-left: 7%;">
-        <strong><a href="#">Contact Us</a></strong>
+        <strong><a href="{% url 'contact'%}">Contact Us</a></strong>
       </span>
     </div>
 
@@ -106,7 +138,7 @@
               <br><br>
               <label for="{{form2.phone_no.id_for_label}}">Phone Number</label>
               {{form2.phone_no}}
-              
+
               <input type="submit" class="ui big blue button" value="Register" style="margin: 7% 33%" />
               {% csrf_token %}
             </form>
@@ -136,17 +168,123 @@
               <label for="password">Password:</label>
               <input type="password" name="password" placeholder="password" required>
               <input type="submit" class="ui big blue button" style="margin: 7% 33%" name="" value="Sign In">
+
               {% csrf_token %}
             </form>
+            <a href = "{% url 'password_reset' %}"><i class ="ui big red button">Forgot Password</i></i></i></a>
             <p style="padding-left: 40%;"><strong>-- OR --</strong></p>
             <br>
             <strong style="padding-left: 30%">Sign in with: </strong>
             <a href="{% url 'social:begin' 'facebook' %}"><i class="big facebook f icon"></i></a>
             <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="big google icon"></i></a><br>
+            {% if errors %}
+            <div class="alert alert-danger">
+                <strong>{{ errors|escape }}</strong>
+            </div>
+            {% endif %}
           </div>
         </div>
 
     </section>
+
+
+
+    <div class="faq-align-container">
+      <div class="faq-header">
+      <h1>Frequently Asked Questions (FAQs)</h1>
+      <br>
+    </div>
+      <div class="faq-container">
+
+
+
+      <p>
+        <strong>1. Which payment methods do you offer? </strong>
+        <br>
+        At the moment, you can only pay by cash only.
+        <br>
+        <br>
+
+
+          <strong>2. Are the rates per person or per room? </strong>
+          <br>
+          All prices, unless stated otherwise, are on a per-room-basis.
+          <br>
+          <br>
+
+
+          <strong>3. What are the reception opening hours? </strong>
+          <br>
+          The reception is open 24 hours and our colleagues will be at your service day and night.
+          <br>
+          <br>
+
+
+          <strong>4. Should I carry any documents to be verified at the time of check-in ? </strong>
+          <br>
+          Guests must be 18 years or older with photo identification to reserve a room. As a government mandate, guests are expected to present a valid proof of identity at the time of check in.
+          <br>
+          <br>
+
+          <strong>5. What is the maximum occupancy allowed per room ? </strong>
+          <br>
+          Most hotels allow additional guests to stay in a room for an extra charge as long as the room doesn’t exceed the maximum number of guests allowed per room (which is 3). Charges for requesting an extra bed is INR 2000 + applicable taxes
+          <br>
+          <br>
+
+          <strong>6.For any queries related to Sea Hotels on Social Media, who can I get in touch with? </strong>
+          <br>
+          You can send us a direct message on any of social media profiles along with your contact details and we shall get back to you.
+          <br>
+          <br>
+
+          <strong>7. Do you have any exclusive offers or promotions on Social media? </strong>
+          <br>
+          As a gesture of our appreciation, we strive to bring you special offers that are exclusive to our social media community. Keep a look out for new offers & promotions on our social media pages.
+          <br>
+          <br>
+
+          <strong>8. Can I have breakfast/dinner even if I am not staying in your hotel? </strong>
+          <br>
+          Yes, you can enjoy a meal or drink in one of our restaurants or bars. You may also reserve a table with our reservation service that is made available on the main Hotel website.
+          <br>
+          <br>
+
+          <strong>9. Does the hotel allow pets? </strong>
+          <br>
+          Unfortunately, we do not allow pets but there are several doggy-day care options within a mile
+          <br>
+          <br>
+
+          <strong>10. Does the hotel have a fitness center? </strong>
+          <br>
+          Yes, located on our rooftop with an operable garage door to let in the cool breeze.
+          <br>
+          <br>
+
+          <strong>11. How much is WiFi in the guest rooms? </strong>
+          <br>
+          Complimentary. There is also a paid package available for people who need an even better bandwidth.
+          <br>
+          <br>
+
+          <strong>12. How many guest rooms does the hotel have? </strong>
+          <br>
+          100 guest rooms  -  20 of which are suites, some rooms have 2 queen beds and some with 1 king bed. 16 guest rooms have operable garage door windows
+          <br>
+          <br>
+
+      </p>
+
+    </div>
+
+    </div>
+
+    <div class="image-wrapper">
+        <img class="image-container" src="{% static 'webapp/img/fire_safety_certified_1.png' %}" alt="fire_safety_certified_1">
+        <img class="image-container" src="{% static 'webapp/img/fire_safety_certified_2.png' %}" alt="fire_safety_certified_2">
+        <img  class="image-container" src="{% static 'webapp/img/food_safety_certified.jpg' %}" alt="food_safety_certified">
+    </div>
 
     <footer style="text-align: center; height: 6%; padding-top: 1%;">
       <h4>&copy; 2019 Sea Hotel. All Rights Reserved.</h4>

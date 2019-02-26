@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <title>Sea Hotel</title>
@@ -35,7 +36,7 @@ section
 
 #book
 {
-    background: url('../../static/webapp/img/tropiki_edit.png') no-repeat center center;
+    background: url('{% static "webapp/img/tropiki_edit.png" %}') no-repeat center center;
     background-size: cover;
 }
 </style>
@@ -43,13 +44,13 @@ section
 <body>
     <div class="ui segment container" style="width: 100%; border-radius: 0%; margin: 0;">
         <span style="padding-left: 4%">
-            <img src="../../static/webapp/img/logo.png" height="60px">
+            <img src="{% static 'webapp/img/logo.png' %}" height="60px">
         </span>
         <span style="padding-left: 65%;">
             Hello, {{ user.username }}!
         </span>
         <span style="padding-left: 4%">
-            <a href="/logout">Sign Out</a>
+            <a href="{%url 'logout' %}">Sign Out</a>
         </span>
     </div>
     <div id="book" style="height: 450px; color: white;">
