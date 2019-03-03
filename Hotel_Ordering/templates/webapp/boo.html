@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<title>Main Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("http://www.verbier.ch/UserFiles/BandeauNews/img_1028_dicopourenfants.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+.w3-container{
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.form
+{
+  padding-right:10px;
+  padding-left: 10px;
+}
+
+.sign-in
+{
+  padding-left:100px;
+  width:600px;
+  float:left;
+}
+
+.sign-up
+{
+  padding-right: 100px;
+  width: 600px;
+  float:right;
+}
+
+/*MINE*/
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 30%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+.mycont{
+  display:flex;
+  justify-content: center;
+}
+.class {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.thumbnails{
+  align-content: center;
+  align-items: center;
+}
+
+
+</style>
+<body>
+
+<div class="w3-container" id="work">
+  <h3 class="w3-center">FACILITIES</h3>
+<!-- first statement -->
+  <div class="w3-container">
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l4 m10">
+      <img src="{% static 'software images/first statement/hf1.jpg'%}" style="max-width:100%;"style="max-height: 130%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Gym">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/first statement/hf2.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Luxury Bar">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/first statement/hf3.png'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Indoor games">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/first statement/hf4.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Spa">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/first statement/hf5.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Tennis court">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/first statement/hf6.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Swimming Pool">
+    </div>
+  </div>
+</div>
+
+<!-- second statement -->
+<h4 class="w3-center">BANQUETS</h4>
+<div class="w3-container">
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l4 m10">
+      <img src="{% static 'software images/second statement/b1.jpg'%}" style="max-width:100%;"style="max-height: 130%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Banquet hall-1">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/second statement/b2.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Banquet hall-2">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/second statement/b3.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Banquet hall-3">
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- third statement -->
+<h3 class="w3-center">TOURIST SPOTS</h3>
+<div class="w3-container">
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l4 m10">
+      <img src="{% static 'software images/third statement/t1.jpg'%}" style="max-width:100%;"style="max-height: 130%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Coast Casino">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/third statement/t2.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Waterfalls">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/third statement/t3.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Botanical garden">
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- fourth statement -->
+<h3 class="w3-center">KITCHEN</h3>
+<div class="w3-container">
+  <div class="w3-row-padding" style="margin-top:50px">
+    <div class="w3-col l4 m10">
+      <img src="{% static 'software images/fourth statement/k1.jpg'%}" style="max-width:100%;"style="max-height: 130%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Main kitchen">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/fourth statement/k2.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Kitchen-1">
+    </div>
+    <div class="w3-col l4 m6">
+      <img src="{% static 'software images/fourth statement/k3.jpg'%}" style="max-width:100%;"style="max-height: 100%;" onclick="onClick(this)" class="w3-hover-opacity" alt="Kitchen-2">
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- footer -->
+<footer class="w3-row-padding w3-padding-32 thumbnails">
+  <h5 class="w3-center">AWARDS</h3>
+  <div>
+  <div style="margin-top:50px; padding-left: 27.5%;" class="row" class="w3-center" class="thumbnails">
+    <div class="corr">
+      <img src="{% static 'software images/fifth statement/a1.png'%}" style="max-width:200px;"style="max-height: 200px;" class="column">
+    </div>
+    <div class="corr">
+      <img src="{% static 'software images/fifth statement/a2.jpg'%}"style="max-width:200px"style="max-height: 200px;" class="column">
+    </div>
+    <div class="corr">
+      <img src="{% static 'software images/fifth statement/a3.jpg'%}" style="max-width:200px;"style="max-height:200px;" class="column">
+    </div>
+  </div>
+</div>
+
+  </footer>
+
+
+
+
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load staticfiles%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sea Hotel</title>
+    <!-- CDN for Bootstrap v4.0.0 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- CDN for Semantic UI v2.3.3 -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+
+    <!-- <script scr="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/accordion.js"></script> -->
+
+</head>
+
+<script>
+    $(document).ready(function () {
+        $('.ui.accordion').accordion();
+    });
+</script>
+
+<body>
+
+    <div class="container" style="padding-bottom: 3%;">
+        <h1 style="text-align: center;">Rooms</h1>
+        <p style="text-align: center;">The Sea Hotel has 71 centrally air-conditioned, full service rooms. It offers a wide variety and type of rooms.</p>
+    </div>
+
+    <div class="accordion" id="accordionExample" style="margin: 0 6%;">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h3>Executive Room</h3>
+            </button>
+        </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <p>The executive rooms come with a choice of a king size bed or twin beds. Coffee kettles, hair dryers, wooden floors
+            and a cozier room ambience are a part of all the executive rooms. Bath tubs and a great line up of guest amenities
+            are also standard. Complimentary breakfast and usage of our state of the art health club is also included in the
+            tariff.</p>
+
+            <h3>Additional Features</h3>
+            <i class="ui right angle icon"></i>Hair dryers<br>
+            <i class="ui right angle icon"></i>Mini bar facility<br>
+            <i class="ui right angle icon"></i>Complementary breakfast and Buffet dinner<br>
+            <i class="ui right angle icon"></i>Multi-way shower & auto temperature controller<br>
+            <i class="ui right angle icon"></i>A completely re-designed new range of guest amenities<br>
+
+            <h3>Executive Room Tariff</h3>
+            <table class="ui celled table">
+                <thead>
+                    <tr><th>Occupancy</th>
+                    <th>Tariff in INR</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Occupancy">Single</td>
+                        <td data-label="Tariff in INR">3800</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Double</td>
+                        <td data-label="Tariff in INR">4400</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Extra person</td>
+                        <td data-label="Tariff in INR">1200</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Taxes</td>
+                        <td data-label="Tariff in INR">18.00 %</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <i class="ui right angle icon"></i>Complementary Buffet breakfast<br>
+            <i class="ui right angle icon"></i>Complementary Buffet dinner<br>
+            <i class="ui right angle icon"></i>Complimentary Mineral water bottle<br>
+            <i class="ui right angle icon"></i>Complimentary Wi-Fi Internet connectivity<br>
+            <i class="ui right angle icon"></i>Complimentary usage of our Health club<br>
+
+            <br>
+
+            <img src="{% static 'webapp/img/executive.JPG' %}" width="100%" alt="">
+        </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h3>Studio Room</h3>
+            </button>
+        </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+            <p>The Studio rooms are a semi family room with an additional room with a single bed (along with the main room with a
+            choice of king sized bed or twin beds). The studio rooms also have a dining table for four, a mini bar and 32" LCD
+            TV. Duvets and the ambience also make the studio rooms special. The studio rooms are especially a fantastic value
+            for money.</p>
+
+            <h3>Additional Features</h3>
+            <i class="ui right angle icon"></i>Mini bar<br>
+            <i class="ui right angle icon"></i>Hair dryers<br>
+            <i class="ui right angle icon"></i>Dining table for four<br>
+            <i class="ui right angle icon"></i>Fruit basket & cookies<br>
+            <i class="ui right angle icon"></i>Additional family room<br>
+            <i class="ui right angle icon"></i>Upgraded guest amenities<br>
+            <i class="ui right angle icon"></i>Complementary breakfast and Buffet dinner<br>
+            <i class="ui right angle icon"></i>Multi-way shower & auto temperature controller<br>
+
+            <h3>Executive Room Tariff</h3>
+            <table class="ui celled table">
+                <thead>
+                    <tr><th>Occupancy</th>
+                    <th>Tariff in INR</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Occupancy">Single</td>
+                        <td data-label="Tariff in INR">4200</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Double</td>
+                        <td data-label="Tariff in INR">4800</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Extra person</td>
+                        <td data-label="Tariff in INR">1200</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Taxes</td>
+                        <td data-label="Tariff in INR">18.00 %</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <i class="ui right angle icon"></i>Complementary Buffet breakfast<br>
+            <i class="ui right angle icon"></i>Complementary Buffet dinner<br>
+            <i class="ui right angle icon"></i>Complimentary Mineral water bottle<br>
+            <i class="ui right angle icon"></i>Complimentary Wi-Fi Internet connectivity<br>
+            <i class="ui right angle icon"></i>Complimentary usage of our Health club<br>
+
+            <br>
+
+            <img src="{% static 'webapp/img/studio.JPG' %}" width="100%" alt="">
+        </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h3>Suite Room</h3>
+            </button>
+        </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+            <p>Our top of the line Suite rooms are truly spacious and comes with a full fledged living room with comfortable sofas
+            and a dining table for four and a bedroom and two separate bathrooms. Wooden floors, stocked mini bar, fruit
+            basket, mineral water are all part of the tariff for this room.</p>
+
+            <h3>Additional Features</h3>
+            <i class="ui right angle icon"></i>Mini bar<br>
+            <i class="ui right angle icon"></i>Hair dryers<br>
+            <i class="ui right angle icon"></i>Dining table for four<br>
+            <i class="ui right angle icon"></i>Fruit basket & cookies<br>
+            <i class="ui right angle icon"></i>Complementary breakfast and Buffet dinner<br>
+            <i class="ui right angle icon"></i>Multi-way shower & auto temperature controller<br>
+            <i class="ui right angle icon"></i>Two full sized rooms : Living room and a bedroom in all suite rooms<br>
+
+            <h3>Executive Room Tariff</h3>
+            <table class="ui celled table">
+                <thead>
+                    <tr><th>Occupancy</th>
+                    <th>Tariff in INR</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Occupancy">Single</td>
+                        <td data-label="Tariff in INR">5800</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Double</td>
+                        <td data-label="Tariff in INR">5800</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Extra person</td>
+                        <td data-label="Tariff in INR">1200</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Occupancy">Taxes</td>
+                        <td data-label="Tariff in INR">18.00 %</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <i class="ui right angle icon"></i>Complementary Buffet breakfast<br>
+            <i class="ui right angle icon"></i>Complementary Buffet dinner<br>
+            <i class="ui right angle icon"></i>Complimentary Mineral water bottle<br>
+            <i class="ui right angle icon"></i>Complimentary Wi-Fi Internet connectivity<br>
+            <i class="ui right angle icon"></i>Complimentary usage of our Health club<br>
+
+            <br>
+
+            <img src="{% static 'webapp/img/suite.JPG'%}" width="100%" alt="">
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div style="padding-top: 3%;">
+        <h2 style="text-align: center">Food Certifications</h2>
+        <img src="{% static 'webapp/img/food.jpg'%}" alt="" style="padding-left: 35%;">
+    </div>
+
+</body>
+</html>

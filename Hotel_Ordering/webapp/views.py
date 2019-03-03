@@ -21,6 +21,10 @@ def index(request):
     return render(request,'webapp/login.html',context = form)
 def contact(request):
     return render(request,'webapp/test.html')
+def rooms(request):
+    return render(request,'webapp/rooms.html')
+def gallery(request):
+    return render(request,'webapp/boo.html')
 def register(request):
     registered = False
     form1 = LoginForm(request.POST)

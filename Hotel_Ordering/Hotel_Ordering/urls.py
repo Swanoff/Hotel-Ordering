@@ -34,4 +34,6 @@ urlpatterns = [
         auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),  # <-
     path('contact/',views.contact,name='contact'),
+    path('rooms/',views.rooms,name='rooms'),
+    path('galley/',views.gallery,name='gallery'),
 ]
