@@ -59,40 +59,43 @@ section
         </div>
         <div class="container" style="position: fixed; left: 12%; top: 55%;">
             <div class="ui segment" style="color: black">
+              <form method="POST">
+
                 <!-- Check-in date -->
                 <div style="float: left;">
                     <i class="ui big red calendar icon"></i>
                     <div class="ui input">
-                        <input type="date">
+                        <input type="date" id="check_in" name="check_in">
                     </div>
                 </div>
                 <!-- Check-out date -->
                 <div style="position: absolute; left: 23%;">
                     <i class="ui big red calendar icon"></i>
                     <div class="ui input">
-                        <input type="date">
+                        <input type="date" id="check_out" name="check_out">
                     </div>
                 </div>
                 <!-- Total guests -->
                 <div style="position: absolute; left: 46%;">
                     <i class="ui big guest icon"></i>
                     <div class="ui input">
-                        <input type="number" placeholder="Guests">
+                        <input type="number" placeholder="Guests" name="guests">
                     </div>
                 </div>
                 <!-- Total rooms -->
-                <div style="position: absolute; left: 65%;">
+                <!-- <div style="position: absolute; left: 65%;">
                     <i class="ui big room icon"></i>
                     <div class="ui input">
                         <input type="number" placeholder="Rooms">
                     </div>
-                </div>
+                </div> -->
                 <!-- Search button -->
                 <div style="position: relative; left: 68%">
-                    <div class="ui big red button">
-                        Search
+                    <div class="ui input">
+                        <input type="submit"/>
                     </div>
                 </div>
+              </form>
                 <!-- Guest and Room count -->
                 <!-- <div class="ui button">Show flowing popup</div>
                 <div class="ui flowing popup top left transition hidden">

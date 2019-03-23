@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html style="height: 100%;">
+
+<head>
+    <h1 class="contact-header">CONTACT US</h1>
+</head>
+
+<style>
+    #grad {
+        background-image: linear-gradient(to bottom right, lightblue, white);
+    }
+
+
+    .contact-header {
+        padding-top: 10px;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .contact-info {
+        padding: 40px;
+        font-size: 20px;
+        text-align: left;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+    }
+
+    .text-info {
+        grid-column: 1/10;
+    }
+
+    .image-info {
+        grid-column: 12/-1;
+    }
+</style>
+
+<body id='grad'>
+
+    <div class='contact-info'>
+        <p class="text-info"><strong>Address:</strong> No. 1, N John St, Panaji L2 5QW, Goa
+            <br>
+            <br>
+            <strong>Name:</strong> Andre Robertson
+            <br>
+            <br>
+            <strong>Mobile:</strong> +91 7700 900077
+            <br>
+            <br>
+            <strong>E-mail:</strong> sea_hotel@gmail.com
+            <br>
+            <br>
+            For more info, checkout our facebook page - <a href="https://www.facebook.com/SeaHotel1/" target="_blank">Sea Hotel</a>
+            <br>
+            <br>
+        </p>
+
+        <img class="image-info" src="{% static 'webapp/img/staticmap.jpg'%}" alt="Italian Trullti" width="100%">
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  position: relative;
+}
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+img {
+  width: 25%;
+  height: 25%;
+}
+</style>
+</head>
+<body>
+
+{% for i in obj %}
+<h2>{{i.description}}</h2>
+<p>{{i.type}}</p>
+<div class="container">
+  <img src="{{i.image.url}}">
+</div>
+{% endfor %}
+
+</body>
+</html>

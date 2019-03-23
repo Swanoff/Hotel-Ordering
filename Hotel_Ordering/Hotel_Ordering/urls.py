@@ -18,6 +18,9 @@ from django.urls import path
 from django.conf.urls import url ,include
 from webapp import views
 from django.contrib.auth import views as auth_views
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
@@ -34,6 +37,9 @@ urlpatterns = [
         auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),  # <-
     path('contact/',views.contact,name='contact'),
-    path('rooms/',views.rooms,name='rooms'),
+    path('rooms/',views.room,name='rooms'),
     path('galley/',views.gallery,name='gallery'),
+    path('about/',views.about,name='about'),
 ]
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -33,7 +33,7 @@ SECRET_KEY = 'vrkb-r$7ve_2ey+v19j&@zx-t820!fi7&n7j1q^vue3#+da(tq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','192.168.43.149']
 
 
 # Application definition

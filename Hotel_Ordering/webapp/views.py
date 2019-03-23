@@ -2,14 +2,16 @@ from django.shortcuts import render,redirect
 from webapp.forms import LoginForm
 from webapp.forms import RegForm
 from django.contrib.auth.models import User
-from webapp.models import UserProfile
+from webapp.models import UserProfile,reservations,rooms
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from social_django.models import UserSocialAuth
 from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from datetime import date
 # Create your views here.
 def index(request):
     print(request.user.is_authenticated)
@@ -19,9 +21,11 @@ def index(request):
     form2  = RegForm()
     form = {"form1":form1,"form2":form2}
     return render(request,'webapp/login.html',context = form)
+def about(request):
+    return render(request,'webapp/about_us.html')
 def contact(request):
-    return render(request,'webapp/test.html')
-def rooms(request):
+    return render(request,'webapp/contact_us.html')
+def room(request):
     return render(request,'webapp/rooms.html')
 def gallery(request):
     return render(request,'webapp/boo.html')
@@ -62,7 +66,32 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 @login_required(login_url='/')
+@csrf_exempt
 def home(request):
+    if(request.method=="POST"):
+        data = request.POST
+        req_r = reservations.objects.all()
+        req_a = []
+        check_i,check_o = data['check_in'],data['check_out']
+        check_i = date(*map(int, check_i.split('-')))
+        check_o = date(*map(int, check_o.split('-')))
+        s = []
+        for i in req_r:
+            a = (i.check_in,i.check_out)
+            b = (check_i,check_o)
+            if(a[0]>=b[0]):
+                if(b[1]>=a[0]):
+                    s.append(i.r_id)
+            else:
+                if(b[0]<=a[1]):
+                    s.append(i.r_id)
+        all_r = rooms.objects.all()
+        obj = []
+        for i in all_r:
+            if(i.room_no not in all_r):
+                obj.append(i)
+        print(obj)
+        return render(request, 'webapp/results.html',context={'obj':obj})
     return render(request, 'webapp/home.html')
 @login_required(login_url='/')
 def settings(request):

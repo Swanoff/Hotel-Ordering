@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html style="height: 100%;">
+
+<head>
+    <h1 class="contact-header">ABOUT US</h1>
+</head>
+
+<style>
+    #grad {
+        background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.3)),
+        url("{% static '/webapp/img/seashore-wallpaper.jpg' %}") no-repeat center center;
+    }
+
+
+    .contact-header {
+        padding-top: 10px;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .contact-info {
+        padding-top: 40px;
+        font-size: 20px;
+        text-align: left;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+    }
+
+    .text-info {
+        grid-column: 6/12;
+    }
+</style>
+
+<body id='grad'>
+
+    <div class='contact-info'>
+        <p class="text-info">
+            <strong>
+                We at The Sea hotel have more than 40 years of experience in the service industry, and a rich heritage in the city of Goa.
+            </strong>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Customer satisfaction is our highest priority.We provide all the facilities to the user without any compromise in quality.We value user feedback greatly and they drive us to excellence.We upgrade our facilities and infrastructure based
+            on these feedback obtained to keep pace with their changing needs.
+            As a proof of a commitment to our guests in providing world class service and quality, We have been - and still are - the only Hotel in Goa for the past 6 years to hold the coveted ISO 9001:2000 international certification for
+            quality, accredited by the Dutch Council for Certification (RvA). All this shows; the genuine hospitality, the gracious service and impeccable infrastructure, as you step into the hotel. You will see our hospitality comes straight from
+            our heart ­ and that's what we call as the 'Passionate hospitality'!!
+        </p>
+    </div>
+
+</body>
+
+</html>
