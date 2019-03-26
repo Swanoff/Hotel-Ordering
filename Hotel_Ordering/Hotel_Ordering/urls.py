@@ -40,6 +40,8 @@ urlpatterns = [
     path('rooms/',views.room,name='rooms'),
     path('galley/',views.gallery,name='gallery'),
     path('about/',views.about,name='about'),
+    path('reserve/',views.reserve,name='reserve'),
+    path('results/',views.results,name='results')
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -19,7 +19,7 @@ class addons(models.Model):
     f_type = models.ForeignKey(room_type,on_delete = models.CASCADE)
     addon = models.CharField(max_length=20)
     pre_book = models.BooleanField()
-
+    cost = models.PositiveIntegerField(primary_key=True)
     def __str__(self):
         return self.type
 
@@ -41,3 +41,9 @@ class reservations(models.Model):
     status = models.CharField(max_length=15)
     def __str__(self):
         return str(self.id)
+# class addon_res(models.Model):
+#     id = models.PositiveIntegerField(primary_key=True)
+#     r_id = models.ForeignKey(reservations,on_delete=models.CASCADE)
+#     a_id = models.ForeignKey(addons,on_delete=models.CASCADE)
+#     def __str__(self):
+#         return str(self.id)

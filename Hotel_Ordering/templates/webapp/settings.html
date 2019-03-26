@@ -1,3 +1,6 @@
+<html>
+<body>
+
 <h2>Settings</h2>
  <h3>Facebook</h3>
  {% if facebook_login %}
@@ -29,3 +32,21 @@
  {% else %}
    <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
  {% endif %}
+ {% for i,j,k in data %}
+ <p> {{i.id}} </p>
+ <p> {{i.r_id}} </p>
+ <p> {{i.check_in}} </p>
+ <p> {{i.check_out}} </p>
+ <br />
+
+ <img src="{{j.image.url}}"/>
+ <p>
+   {{j.type}}
+ </p>
+ <br />
+ <p>
+   {{k.cost}}
+ </p>
+ {% endfor %}
+</body>
+ </html>

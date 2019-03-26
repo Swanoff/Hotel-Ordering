@@ -5,7 +5,7 @@
   <title>Sea Hotel</title>
     <!-- CDN for Bootstrap v4.0.0 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- CDN for Semantic UI v2.3.3 -->
@@ -45,14 +45,14 @@
       </div>
       {% for i in obj %}
       <div class='ui segment' style="">
-        <h4>{{i.type}}</h4>
         <div style="display: block;">
+        <h4>{{i.type}}</h4>
           <div style="display: inline-block;">
             <img src="{{i.image.url}}">
           </div>
           <div style="display: inline-block; width: 60%; padding-left: 5%;">
             <p>{{i.description}}</p><br>
-            <div class='ui big red button' style="margin-top: 5%">
+            <div class='ui big red button' style="margin-top: 5%" id="{{i.room_no}}" name="button">
               Book Now
             </div>
           </div>
@@ -60,6 +60,34 @@
       </div>
       {% endfor %}
     </div>
-
+    <script>
+       $('[name="button"]').on("click",function(event){
+          console.log("YO ERE");
+          id = $(this).attr('id');
+          check_in = "{{check_in}}";
+          check_out = "{{check_out}}";
+          var url = '{% url "reserve" %}';
+          var form = $('<form action="' + url + '" method="post">' +
+          '<input type="text" name="id" value="' + id + '" />' +
+          '<input type="text" name="check_in" value="' + check_in + '" />' +
+          '<input type="text" name="check_out" value="' + check_out + '" />' +
+          '</form>');
+          $('body').append(form);
+          form.submit();
+      });
+      // $('[name="button"]').on("click",function(event){
+      //   console.log("YO ERE")
+      //   id = $(this).attr('id')
+      //   check_in = "{{check_in}}"
+      //   check_out = "{{check_out}}"
+      //   $.post("/reserve/",{
+      //     "id":id,
+      //     "check_in":check_in,
+      //     "check_out":check_out,
+      //   },function(data,status,jqXHR){
+      //     window.location = '/settings/'
+      //   });
+      // })
+    </script>
 </body>
 </html>

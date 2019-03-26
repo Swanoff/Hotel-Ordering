@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
+from django.urls import reverse
 from webapp.forms import LoginForm
 from webapp.forms import RegForm
 from django.contrib.auth.models import User
-from webapp.models import UserProfile,reservations,rooms
+from webapp.models import UserProfile,reservations,rooms,addons,room_type
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -66,8 +67,11 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 @login_required(login_url='/')
-@csrf_exempt
 def home(request):
+    return render(request, 'webapp/home.html')
+@login_required
+@csrf_exempt
+def results(request):
     if(request.method=="POST"):
         data = request.POST
         req_r = reservations.objects.all()
@@ -85,14 +89,27 @@ def home(request):
             else:
                 if(b[0]<=a[1]):
                     s.append(i.r_id)
+        # print(s)
         all_r = rooms.objects.all()
         obj = []
         for i in all_r:
-            if(i.room_no not in all_r):
+            if(i not in s):
                 obj.append(i)
-        print(obj)
-        return render(request, 'webapp/results.html',context={'obj':obj})
-    return render(request, 'webapp/home.html')
+        # print(obj)
+        return render(request, 'webapp/results.html',context={'obj':obj,'check_in':data['check_in'],'check_out':data['check_out']})
+
+@login_required(login_url='/')
+@csrf_exempt
+def reserve(request):
+    data = request.POST
+    user = request.user
+    r_id = data['id']
+    check_in = date(*map(int, data['check_in'].split('-')))
+    check_out = date(*map(int, data['check_out'].split('-')))
+    r = rooms.objects.get(room_no = r_id)
+    res = reservations(u_id = user,r_id = r,check_in=check_in,check_out=check_out,status=False)
+    res.save()
+    return HttpResponseRedirect('/settings/')
 @login_required(login_url='/')
 def settings(request):
     user = request.user
@@ -106,11 +123,19 @@ def settings(request):
         facebook_login = None
 
     can_disconnect = (user.social_auth.count() > 1 or user.has_usable_password())
-
+    n_reservation = reservations.objects.filter(u_id=request.user)
+    r = []
+    c = []
+    for i in n_reservation:
+        temp = rooms.objects.get(room_no = i.r_id)
+        r.append(rooms.objects.get(room_no = i.r_id))
+        c.append(room_type.objects.get(type=temp.type))
+    data  = zip(n_reservation,r,c)
     return render(request, 'webapp/settings.html', {
         'google_login' : google_login,
         'facebook_login': facebook_login,
-        'can_disconnect': can_disconnect
+        'can_disconnect': can_disconnect,
+        'data':data,
     })
 @login_required(login_url = '/')
 def password(request):
