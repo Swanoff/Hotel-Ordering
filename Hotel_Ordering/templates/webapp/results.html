@@ -1,33 +1,65 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-<style>
-.container {
-  position: relative;
-}
-
-.topleft {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 18px;
-}
-
-img {
-  width: 25%;
-  height: 25%;
-}
-</style>
+  <title>Sea Hotel</title>
+    <!-- CDN for Bootstrap v4.0.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- CDN for Semantic UI v2.3.3 -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
 </head>
-<body>
+<style>
+  .container {
+    position: relative;
+  }
 
-{% for i in obj %}
-<h2>{{i.description}}</h2>
-<p>{{i.type}}</p>
-<div class="container">
-  <img src="{{i.image.url}}">
-</div>
-{% endfor %}
+  .topleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+  }
+
+  img {
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  div > * {
+  vertical-align:middle; // Align children to middle of line
+  }
+</style>
+<body>
+    <div style="margin: 0% 15%">
+      <div style="margin-top: 2%">
+        <h1><i class='ui red bed icon'></i>&nbsp; &nbsp; Available Rooms</h1>
+      </div>
+      {% for i in obj %}
+      <div class='ui segment' style="">
+        <h4>{{i.type}}</h4>
+        <div style="display: block;">
+          <div style="display: inline-block;">
+            <img src="{{i.image.url}}">
+          </div>
+          <div style="display: inline-block; width: 60%; padding-left: 5%;">
+            <p>{{i.description}}</p><br>
+            <div class='ui big red button' style="margin-top: 5%">
+              Book Now
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
 </body>
 </html>
