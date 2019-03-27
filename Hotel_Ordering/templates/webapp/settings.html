@@ -47,12 +47,37 @@
      <p> Check-Out Date &nbsp;: &nbsp;&nbsp;{{i.check_out}} </p>
      <p> Total Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;<i class='rupee sign icon'></i><strong>{{k.cost}}</strong></p>
    </div>
-   <div class='ui red button' style="margin-left: 20%;">
+   <div class='ui red button' style="margin-left: 20%;" id={{i.id}} name="button" abc="{{i.check_in}}">
       Cancel Booking
    </div>
  </div>
  {% endfor %}
-
+<script>
+         $('[name="button"]').on("click",function(event){
+         console.log("YO ERE");
+         abc = $(this).attr('abc');
+         id = $(this).attr('id');
+         var url = '{% url "cancel" %}';
+         var form = $('<form action="' + url + '" method="post">' +
+           '<input type="text" name="id" value="' + id + '" />' +
+           '</form>');
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = yyyy + '-'+mm+'-'+dd;
+            var oDateOne = new Date(today);
+            var oDateTwo = new Date(abc);
+            console.log(abc)
+            if(oDateOne-oDateTwo>=0){
+            alert('Booking already done')
+            }
+            else{
+             $('body').append(form);
+             form.submit();
+            }
+         });
+</script>
 <h2 style="padding-top: 3%;"><i class='cog icon'></i>&nbsp;&nbsp;Account Settings</h2>
 <div class='ui segment'>
   <h3><i class="blue facebook f icon"></i>&nbsp;&nbsp;Facebook</h3>

@@ -30,6 +30,8 @@ def room(request):
     return render(request,'webapp/rooms.html')
 def gallery(request):
     return render(request,'webapp/boo.html')
+def awards(request):
+    return render(request,'webapp/awards.html')
 def register(request):
     registered = False
     form1 = LoginForm(request.POST)
@@ -109,6 +111,14 @@ def reserve(request):
     r = rooms.objects.get(room_no = r_id)
     res = reservations(u_id = user,r_id = r,check_in=check_in,check_out=check_out,status=False)
     res.save()
+    return HttpResponseRedirect('/settings/')
+@login_required(login_url='/')
+@csrf_exempt
+def cancel(request):
+    data = request.POST
+    id = data['id']
+    res = reservations.objects.get(id = id)
+    res.delete()
     return HttpResponseRedirect('/settings/')
 @login_required(login_url='/')
 def settings(request):

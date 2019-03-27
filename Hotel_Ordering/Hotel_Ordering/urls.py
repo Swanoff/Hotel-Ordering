@@ -38,10 +38,12 @@ urlpatterns = [
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),  # <-
     path('contact/',views.contact,name='contact'),
     path('rooms/',views.room,name='rooms'),
-    path('galley/',views.gallery,name='gallery'),
+    path('gallery/',views.gallery,name='gallery'),
     path('about/',views.about,name='about'),
     path('reserve/',views.reserve,name='reserve'),
-    path('results/',views.results,name='results')
+    path('results/',views.results,name='results'),
+    path('cancel/',views.cancel,name='cancel'),
+    path('awards/',views.awards,name='awards'),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

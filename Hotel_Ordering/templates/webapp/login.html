@@ -56,7 +56,9 @@
 
     .image-wrapper{
       display: flex;
-      justify-content: space-around;
+      width: 250px;
+      height: 250px;
+      padding-left: 35%;
     }
 
     .faq-align-container{
@@ -98,7 +100,7 @@
         <strong><a href="{% url 'rooms'%}">Rooms</a></strong>
       </span>
       <span style="padding-left: 7%;">
-        <strong><a href="#">Awards</a></strong>
+        <strong><a href="{% url 'awards' %}">Awards</a></strong>
       </span>
       <span style="padding-left: 7%;">
         <strong><a href="{% url 'contact'%}">Contact Us</a></strong>
@@ -171,8 +173,8 @@
 
               {% csrf_token %}
             </form>
-            <a href = "{% url 'password_reset' %}"><i class ="ui big red button">Forgot Password</i></i></i></a>
-            <p style="padding-left: 40%;"><strong>-- OR --</strong></p>
+            <a style="padding-left: 20%" href = "{% url 'password_reset' %}"><i class ="ui big red button">Forgot Password</i></i></i></a>
+            <p style="padding-left: 43%; padding-top: 3%;"><strong>-- OR --</strong></p>
             <br>
             <strong style="padding-left: 30%">Sign in with: </strong>
             <a href="{% url 'social:begin' 'facebook' %}"><i class="big facebook f icon"></i></a>
@@ -320,8 +322,13 @@
 
     <div class="image-wrapper">
         <img class="image-container" src="{% static 'webapp/img/fire_safety_certified_1.png' %}" alt="fire_safety_certified_1">
-        <img class="image-container" src="{% static 'webapp/img/fire_safety_certified_2.png' %}" alt="fire_safety_certified_2">
-        <img  class="image-container" src="{% static 'webapp/img/food_safety_certified.jpg' %}" alt="food_safety_certified">
+        <img style="padding-left: 20%;" class="image-container" src="{% static 'webapp/img/fire_safety_certified_2.png' %}" alt="fire_safety_certified_2">
+        <img style="" class="image-container" src="{% static 'webapp/img/food_safety_certified.jpg' %}" alt="food_safety_certified">
+    </div>
+
+    <div style="padding-top: 3%;">
+      <h2 style="text-align: center">Food Certifications</h2>
+      <img src="{% static 'webapp/img/food.jpg'%}" alt="" style="padding-left: 35%;">
     </div>
 
     <footer style="text-align: center; height: 6%; padding-top: 1%;">
