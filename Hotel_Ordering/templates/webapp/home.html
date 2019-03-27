@@ -46,17 +46,20 @@ section
         <span style="padding-left: 4%">
             <img src="{% static 'webapp/img/logo.png' %}" height="60px">
         </span>
-        <span style="padding-left: 65%;">
+        <span style="padding-left: 60%;">
             Hello, {{ user.username }}!
+        </span>
+        <span style="padding-left: 4%;">
+            <a href="{%url 'settings' %}">Settings</a>
         </span>
         <span style="padding-left: 4%">
             <a href="{%url 'logout' %}">Sign Out</a>
         </span>
     </div>
     <div id="book" style="height: 450px; color: white;">
-        <div class="ui round red button" style="position: fixed; top: 38%; left: 46.5%;">
+        <!-- <div class="ui round red button" style="position: fixed; top: 38%; left: 46.5%;">
             BOOK NOW
-        </div>
+        </div> -->
         <div class="container" style="position: fixed; left: 12%; top: 55%;">
             <div class="ui segment" style="color: black">
               <form method="POST" action = "{% url 'results' %}">

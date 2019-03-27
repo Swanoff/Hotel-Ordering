@@ -1,52 +1,95 @@
+{% load staticfiles %}
 <html>
+
+<head>
+  <title>Sea Hotel</title>
+    <!-- CDN for Bootstrap v4.0.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- CDN for Semantic UI v2.3.3 -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+</head>
+
+<style>
+  #settings
+  {
+    margin: 3% 10%;
+  }
+</style>
+
 <body>
+  <div class="ui segment container" style="width: 100%; border-radius: 0%; margin: 0;">
+    <span style="padding-left: 4%">
+      <a href="{% url 'home' %}"><img src="{% static 'webapp/img/logo.png' %}" height="60px"></a>
+    </span>
+    <span style="padding-left: 65%;">
+      Hello, {{ user.username }}!
+    </span>
+    <span style="padding-left: 4%">
+      <a href="{%url 'logout' %}">Sign Out</a>
+    </span>
+  </div>
+  <div id='settings'>
 
-<h2>Settings</h2>
- <h3>Facebook</h3>
- {% if facebook_login %}
-   <p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
-   {% if can_disconnect %}
-     <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
-       {% csrf_token %}
-       <button type="submit">Disconnect from Facebook</button>
-     </form>
-   {% else %}
-     <button type="button" disabled>Disconnect from Facebook</button>
-     <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
-   {% endif %}
- {% else %}
-   <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
- {% endif %}
- <h3>Google</h3>
- {% if google_login %}
-   <p>Connected as <a href="https://google.com/{{ google_login.extra_data.access_token}}/" target="_blank">{{ google_login.Uid }}</a></p>
-   {% if can_disconnect %}
-     <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
-       {% csrf_token %}
-       <button type="submit">Disconnect from Google</button>
-     </form>
-   {% else %}
-     <button type="button" disabled>Disconnect from Google</button>
-     <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
-   {% endif %}
- {% else %}
-   <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
- {% endif %}
+ <h1><i class='calendar check outline icon'></i>&nbsp;&nbsp;Booking History</h1>
+
  {% for i,j,k in data %}
- <p> {{i.id}} </p>
- <p> {{i.r_id}} </p>
- <p> {{i.check_in}} </p>
- <p> {{i.check_out}} </p>
- <br />
-
- <img src="{{j.image.url}}"/>
- <p>
-   {{j.type}}
- </p>
- <br />
- <p>
-   {{k.cost}}
- </p>
+ <div class='ui segment'>
+   <img src="{{j.image.url}}" style="width: 250px; height: 200px; vertical-align: top; border-radius: 5px;" />
+   <div style="display: inline-block; margin-left: 3%;">
+     <p> Booking ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;{{i.id}} </p>
+     <p> Room Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;{{j.type}}</p>
+     <p> Room Number &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;{{i.r_id}} </p>
+     <p> Check-In Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;{{i.check_in}} </p>
+     <p> Check-Out Date &nbsp;: &nbsp;&nbsp;{{i.check_out}} </p>
+     <p> Total Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;<i class='rupee sign icon'></i><strong>{{k.cost}}</strong></p>
+   </div>
+   <div class='ui red button' style="margin-left: 20%;">
+      Cancel Booking
+   </div>
+ </div>
  {% endfor %}
+
+<h2 style="padding-top: 3%;"><i class='cog icon'></i>&nbsp;&nbsp;Account Settings</h2>
+<div class='ui segment'>
+  <h3><i class="blue facebook f icon"></i>&nbsp;&nbsp;Facebook</h3>
+  {% if facebook_login %}
+  <p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/"
+      target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+  {% if can_disconnect %}
+  <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
+    {% csrf_token %}
+    <button type="submit">Disconnect from Facebook</button>
+  </form>
+  {% else %}
+  <button type="button" disabled>Disconnect from Facebook</button>
+  <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before
+    disconnecting from Facebook.</p>
+  {% endif %}
+  {% else %}
+  <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
+  {% endif %}
+  <h3><i class="red google icon"></i>&nbsp;&nbsp;Google</h3>
+  {% if google_login %}
+  <p>Connected as <a href="https://google.com/{{ google_login.extra_data.access_token}}/"
+      target="_blank">{{ google_login.Uid }}</a></p>
+  {% if can_disconnect %}
+  <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+    {% csrf_token %}
+    <button type="submit">Disconnect from Google</button>
+  </form>
+  {% else %}
+  <button type="button" disabled>Disconnect from Google</button>
+  <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before
+    disconnecting from Facebook.</p>
+  {% endif %}
+  {% else %}
+  <a href="{% url 'social:begin' 'google-oauth2' %}">Connect to Google</a>
+  {% endif %}
+</div>
+</div>
 </body>
  </html>
